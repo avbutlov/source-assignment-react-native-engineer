@@ -39,43 +39,42 @@ We will provide an API which will contain all data you need to complete this ass
 
 ### API
 
-The data can be requested from the API:
-api url...
+The data can be requested from the API. The base URL for this API is mentioned in the invitation email for the tech assignment.
+
+You can use the following endpoints:
+
+- `GET /stems/<stem_id>`: get a specific stem. To get you started, there is an existing stem with id 
+  `9ac45c32-64f1-4a27-b554-e3544cbbe001` that you can use
+- `PUT /stems/<stem_id>`: update a specific stem. It expects a body with the data structure explained below as format, 
+   but **you have to out the `id` field from the body. Will return the updated stem
+- `POST /stems`: create a new stem. It expects a body with the data structure explained below as format, 
+   but **you have to out the `id` field from the body. Will return the new stem, incl. the id
 
 ### Data format
 
 Example of the data object:
-```
+```json
 {
-    "stems": [
-        {
-            "root_node": {
+    "id": "7b02aa08-5f06-4ac5-ae2b-fb582a2e8372",
+    "root_node": {
+        "level": 1,
+        "id": "1",
+        "children": [
+            {
                 "level": 1,
-                "id": "1",
-                "children": [
+                "id": "2",
+                "children": [],
+                "fruits": [
                     {
-                        "level": 1,
-                        "id": "2",
-                        "children": [],
-                        "fruits": [
-                            {
-                                "development_state": "HARVESTABLE_FRUIT",
-                                "id": "fb532607-a858-4ad2-98f9-7aff6f682e92"
-                            }
-                        ]
-                    },
-                    {
-                        "level": 2,
-                        "id": "1a",
-                        "children": [],
-                        "fruits": [
-                            {
-                                "development_state": "HARVESTABLE_FRUIT",
-                                "id": "fb532607-a858-4ad2-98f9-7aff6f682e92"
-                            }
-                        ]
+                        "development_state": "HARVESTABLE_FRUIT",
+                        "id": "fb532607-a858-4ad2-98f9-7aff6f682e92"
                     }
-                ],
+                ]
+            },
+            {
+                "level": 2,
+                "id": "1a",
+                "children": [],
                 "fruits": [
                     {
                         "development_state": "HARVESTABLE_FRUIT",
@@ -83,9 +82,14 @@ Example of the data object:
                     }
                 ]
             }
-        }
-    ],
-    "id": "7b02aa08-5f06-4ac5-ae2b-fb582a2e8372"
+        ],
+        "fruits": [
+            {
+                "development_state": "HARVESTABLE_FRUIT",
+                "id": "fb532607-a858-4ad2-98f9-7aff6f682e92"
+            }
+        ]
+    }
 }
 ```
 
